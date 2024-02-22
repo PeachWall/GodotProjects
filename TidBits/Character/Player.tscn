@@ -1,9 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://dmexr3b4wtrry"]
+[gd_scene load_steps=28 format=3 uid="uid://dmexr3b4wtrry"]
 
 [ext_resource type="Texture2D" uid="uid://d3q5t28kogucj" path="res://Sprites/doug sheet.png" id="1_bg1p1"]
 [ext_resource type="Script" path="res://Character/Scripts/Player.gd" id="1_wxfni"]
 [ext_resource type="Script" path="res://Character/Node.gd" id="2_fx71k"]
 [ext_resource type="Script" path="res://Character/Scripts/Camera2D.gd" id="2_l07wf"]
+[ext_resource type="Script" path="res://Character/Scripts/idle.gd" id="3_jn81h"]
+[ext_resource type="Script" path="res://Character/Walk.gd" id="4_rdrjg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojiep"]
 size = Vector2(8, 9)
@@ -190,6 +192,12 @@ script = ExtResource("1_wxfni")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_fx71k")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_jn81h")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("4_rdrjg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
