@@ -18,11 +18,11 @@ func _physics_process(delta):
 	if current_state: 
 		current_state.Physics_Update(delta)
 
-func on_transition(State, new_state):
+func on_child_transition(State, new_state_name):
 	if State != current_state:
 		return
 	
-	var new_stae = states.get(new_state.to_lower())
+	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
 		return 
 	

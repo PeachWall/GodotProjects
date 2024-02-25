@@ -12,7 +12,7 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 
-var player_state = "idel" 
+var player_state = 0
 
 var dodge_timer : float = 0.0
 var dodge_player_angle = 0
@@ -39,40 +39,12 @@ func _physics_process(_delta):
 	)
 	
 	if Input.is_action_just_pressed("space") and player_state != "jump":
-		start_dodge()
-	elif input_direction != Vector2.ZERO and player_state != "jump":
-		player_state = "walk"
-	elif input_direction == Vector2.ZERO:
-		player_state = "idel"
-	
-	if player_state == "jump":
-		dodge_player_angle += 4.5
-		dodge_timer -= _delta
-		if dodge_timer <= 0:
-			end_dodge()
-			dodge_player_angle = 0
+		pass 
 	
 	update_animation_parameter(input_direction)
-	
-	state_change()
-	move_and_slide()
-	
-	
-func start_dodge():
-	player_state = "jump"
-	dodge_timer = dodge_duration
 
-func end_dodge():
-	dodge_timer = dodge_cooldown
-
-func state_change():
-	print(player_state)
-	if velocity != Vector2.ZERO:
-		state_machine.travel("idel")
-		rotation_degrees = 0
-	else:
-		velocity = input_direction * player_speed
-		state_machine.travel("walk")
+func check_state(): 
+	return player_state
 
 func update_animation_parameter(move_input: Vector2): 
 	if (move_input != Vector2.ZERO): 
