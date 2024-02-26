@@ -5,10 +5,6 @@ extends CharacterBody2D
 @export var step_frequency = 0.3
 @export var start_direction : Vector2 = Vector2(1, 0)
 
-@export var dodge_speed : float = 130 
-@export var dodge_duration : float = 0.3
-@export var dodge_cooldown : float = 1.0
-
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 
