@@ -12,8 +12,6 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 
-var player_state = 0
-
 var dodge_timer : float = 0.0
 var dodge_player_angle = 0
 var step_time = 0
@@ -38,13 +36,10 @@ func _physics_process(_delta):
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
 	
-	if Input.is_action_just_pressed("space") and player_state != "jump":
-		pass 
-	
 	update_animation_parameter(input_direction)
 
-func check_state(): 
-	return player_state
+func get_grounded(): 
+	return grounded 
 
 func update_animation_parameter(move_input: Vector2): 
 	if (move_input != Vector2.ZERO): 

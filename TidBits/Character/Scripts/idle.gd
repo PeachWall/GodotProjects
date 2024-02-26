@@ -7,6 +7,7 @@ func Enter():
 	owner.velocity = Vector2.ZERO
 	
 func Update(): 
-	if owner.get_state 
+	if Input.is_action_just_pressed("space"):
+		stateMachine.
 	
 
