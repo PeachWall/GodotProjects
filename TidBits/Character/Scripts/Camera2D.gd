@@ -1,6 +1,6 @@
 extends Camera2D
 
-const MAX_DISTANCE = 15
+const MAX_DISTANCE = 10
 
 var target_distance = 0
 var center_pos = position

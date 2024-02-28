@@ -9,7 +9,7 @@ func _ready():
 	for child in get_children():
 		if child is State: 
 			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
+			child.Transition_to.connect(on_child_transition)
 	
 	if initial_state: 
 		initial_state.Enter()
@@ -18,23 +18,26 @@ func _ready():
 func _process(delta): 
 	if current_state:
 		current_state.Update(delta)
+		
 
 func _physics_process(delta): 
 	if current_state: 
 		current_state.Physics_Update(delta)
 
-func on_child_transition(State, new_state_name):
-	if State != current_state: # check if state calling and new state are the same
+func on_child_transition(state, new_state_name):
+	if state != current_state: # check if state calling and new state are the same
 		return
-	
+
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state: # check if the state exists 
 		return 
 	
 	if current_state: # check if we have a current state 
-		current_state.exit()
+		current_state.Exit()
 		
-	new_state.enter()
+	new_state.Enter()
+	
+	owner.update_animation_state(new_state_name.to_lower())
 	
 	current_state = new_state
 		
