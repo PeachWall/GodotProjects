@@ -14,7 +14,3 @@ func Update(delta: float):
 	
 	if Input.get_action_strength("space"):
 		Transition_to.emit(self,"jump")
-
-			
-	
-

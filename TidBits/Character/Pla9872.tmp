@@ -23,23 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
-}
-
-[sub_resource type="Animation" id="Animation_0jus3"]
-resource_name = "idel_left"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DougSheet2:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_b8ao6"]
@@ -58,8 +42,8 @@ tracks/0/keys = {
 "values": [4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_j36dj"]
-resource_name = "walk left"
+[sub_resource type="Animation" id="Animation_0yvsa"]
+resource_name = "idel right"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -68,10 +52,26 @@ tracks/0/path = NodePath("DougSheet2:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_0jus3"]
+resource_name = "idel_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DougSheet2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_t8ajw"]
@@ -89,41 +89,64 @@ tracks/0/keys = {
 "values": [4]
 }
 
+[sub_resource type="Animation" id="Animation_j36dj"]
+resource_name = "walk left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DougSheet2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q1brq"]
+resource_name = "walk right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DougSheet2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wjay1"]
 _data = {
 "RESET": SubResource("Animation_3ajm4"),
-"idel horizontal": SubResource("Animation_0jus3"),
-"idel verticle": SubResource("Animation_b8ao6"),
-"walk horizontal": SubResource("Animation_j36dj"),
-"walk verticle": SubResource("Animation_t8ajw")
+"idel front": SubResource("Animation_b8ao6"),
+"idel right": SubResource("Animation_0yvsa"),
+"idel_left": SubResource("Animation_0jus3"),
+"walk front": SubResource("Animation_t8ajw"),
+"walk left": SubResource("Animation_j36dj"),
+"walk right": SubResource("Animation_q1brq")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ld5ou"]
-animation = &"idel verticle"
+animation = &"idel front"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ywiw0"]
-animation = &"idel horizontal"
+animation = &"idel_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nbix4"]
-animation = &"idel horizontal"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mnl2o"]
-animation = &"idel horizontal"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gjy41"]
-animation = &"idel horizontal"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_feex8"]
+animation = &"idel right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_oy3q1"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_ld5ou")
 blend_point_0/pos = Vector2(0, -1.1)
 blend_point_1/node = SubResource("AnimationNodeAnimation_ywiw0")
 blend_point_1/pos = Vector2(-1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_nbix4")
+blend_point_2/node = SubResource("AnimationNodeAnimation_feex8")
 blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_mnl2o")
-blend_point_3/pos = Vector2(-1, 0)
-blend_point_4/node = SubResource("AnimationNodeAnimation_gjy41")
-blend_point_4/pos = Vector2(1, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
@@ -131,19 +154,19 @@ blend_mode = 1
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xbhye"]
 animation = &"walk front"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_clq7k"]
-animation = &"walk horizontal"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e7mwl"]
+animation = &"walk left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m2awm"]
-animation = &"walk horizontal"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i65eg"]
+animation = &"walk right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_fripq"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_xbhye")
 blend_point_0/pos = Vector2(0, -1.1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_clq7k")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_m2awm")
-blend_point_2/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_e7mwl")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_i65eg")
+blend_point_2/pos = Vector2(1, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 snap = Vector2(0.01, 0.1)
@@ -181,10 +204,6 @@ script = ExtResource("4_rdrjg")
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("5_5xx7a")
-dodge_speed = 200.0
-dodge_duration = 0.02
-
-[node name="JumpTimer" type="Timer" parent="StateMachine/Jump"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
@@ -200,7 +219,6 @@ position = Vector2(0, -1)
 texture = ExtResource("1_bg1p1")
 hframes = 2
 vframes = 3
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -213,5 +231,5 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_gu7fv")
 anim_player = NodePath("../AnimationPlayer")
-parameters/idle/blend_position = Vector2(0.408, -0.12126)
+parameters/idle/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0.0228311, -0.960317)
